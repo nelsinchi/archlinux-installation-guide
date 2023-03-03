@@ -312,7 +312,7 @@ yay -S amarok libgpod loudmouth ifuse libmygpo-qt clamz gst-libav gtk-sharp-2
 ***Installing KVM/QEMU/Virt-Manager (VirtualBox replacement)***
 
 ```
-yay -S qemu virt-manager ebtables dnsmasq bridge-utils openbsd-netcat firewalld dmidecode
+yay -S qemu virt-manager ebtables dnsmasq bridge-utils openbsd-netcat firewalld dmidecode virt-viewer swtpm
 ```
 For drivers support in Windows OS Guest, install the `virtio-win` AUR package and once Windows OS is installed, mount `/usr/share/virtio/virtio-win.iso` to install Windows OS drivers:
 ```
