@@ -340,7 +340,7 @@ $ yay -S libreoffice-fresh libreoffice-fresh-es libreoffice-extension-texmaths l
 
 ***Installing Internet Browsers and Flash Player support on Opera/Chromium/Chrome/Vivaldi***
 ```
-$ yay -S opera opera-ffmpeg-codecs firefox vivaldi chromium google-chrome pepper-flash ttf-dejavu ttf-freefont ttf-liberation ttf-bitstream-vera ttf-linux-libertine ttf-droid ttf-ubuntu-font-family ttf-oxygen noto-fonts ttf-croscore ttf-ms-fonts terminus-font flashplugin
+$ yay -S opera opera-ffmpeg-codecs firefox vivaldi chromium google-chrome pepper-flash noto-fonts-emoji ttf-dejavu ttf-freefont ttf-liberation ttf-bitstream-vera ttf-linux-libertine ttf-droid ttf-ubuntu-font-family ttf-oxygen noto-fonts ttf-croscore ttf-ms-fonts terminus-font flashplugin
 ```
 
 ***Installing useful apps and common components***
