@@ -29,7 +29,7 @@ $ cfdisk /dev/sda
 >>  /dev/sda1                           2048             1050623             1048576            512M EFI System               ## Only required for UEFI Systems
     /dev/sda2                        1050624          1217398783          1216348160            580G Linux filesystem
     /dev/sda3                     1217398784          1657800703           440401920            210G Microsoft reserved
-    /dev/sda4                     1657800704          2000408575           342607872          163.4G Apple APFS
+    /dev/sda4                     1657800704          2000408575           342607872            163.4G Apple APFS
 ```
 
 ***Format Partitions:***
