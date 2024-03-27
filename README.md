@@ -207,30 +207,34 @@ Update repo databases:
 sudo pacman -Syyu
 ```
 
-***Make sure NetworkManager is already installed***
+***Chinese optional repo, a lot of AUR packages are already compiled and included here*** (***unoficial repo***)
+Add the following to `vi /etc/pacman.conf` at the end of the file:
 ```
-sudo pacman -S networkmanager
-```
-
-***Now, Configure a Public DNS and Start the NetworkManager applet with a Static IP***
-```
-nmcli c show
-```
-
-```
-sudo nmcli c modify 'Wired connection 1' ipv4.addresses '192.168.1.10/24'
-sudo nmcli c modify 'Wired connection 1' ipv4.gateway '192.168.1.1'
-sudo nmcli c modify 'Wired connection 1' ipv4.dns '1.1.1.1, 1.0.0.1'
-sudo nmcli c modify 'Wired connection 1' ipv4.method manual
+[archlinuxcn]
+Server = https://repo.archlinuxcn.org/$arch
+## or install archlinuxcn-mirrorlist-git and use the mirrorlist
+#Include = /etc/pacman.d/archlinuxcn-mirrorlist
 ```
 
-***Xorg***
-- Nvidia Graphic Card:
+For mirrors (mainly in China), see https://github.com/archlinuxcn/mirrorlist-repo. To add PGP Keys:
 ```
-pacman -S xorg xorg-server xorg-apps xorg-xinit xorg-twm vim xterm unrar unzip p7zip nvidia nvidia-utils nvidia-settings opencl-nvidia lib32-nvidia-utils
+sudo pacman -Syy && sudo pacman -S archlinuxcn-keyring
+```
+**NOTE:** If there is an error with the key, use the following command to fix it, then, try to install the package `archlinuxcn-keyring` again.
+```
+sudo pacman-key --lsign-key "farseerfc@archlinux.org"
 ```
 
-If you have old video card Nvidia: `pacman -S nvidia-340xx-lts nvidia-340xx-utils`
+Also, install `yay` (yaourt or aurman replacement) to be able to install AUR packages:
+```
+pacman -S yay
+```
+
+Once the yay package manager is installed, fix the issue with the missing kernel modules with the following commands:
+```
+yay -S mkinitcpio-firmware aic94xx-firmware wd719x-firmware btrfs-progs
+sudo mkinitcpio -p linux
+```
 
 - Installing Arch Linux with dual graphics cards:
 https://wiki.archlinux.org/index.php/Bumblebee#Installing_Bumblebee_with_Intel.2FNVIDIA
@@ -263,36 +267,6 @@ Start KDE:
 ```
 sudo systemctl enable sddm
 reboot
-```
-
-***Chinese optional repo, a lot of AUR packages are already compiled and included here*** (***unoficial repo***)
-Add the following to `vi /etc/pacman.conf` at the end of the file:
-```
-[archlinuxcn]
-Server = https://repo.archlinuxcn.org/$arch
-## or install archlinuxcn-mirrorlist-git and use the mirrorlist
-#Include = /etc/pacman.d/archlinuxcn-mirrorlist
-```
-
-For mirrors (mainly in China), see https://github.com/archlinuxcn/mirrorlist-repo. To add PGP Keys:
-```
-sudo pacman -Syy && sudo pacman -S archlinuxcn-keyring
-```
-**NOTE:** If there is an error with the key, use the following command to fix it, then, try to install the package `archlinuxcn-keyring` again.
-```
-sudo pacman-key --lsign-key "farseerfc@archlinux.org"
-```
-
-
-Also, install `yay` (yaourt or aurman replacement) to be able to install AUR packages:
-```
-pacman -S yay
-```
-
-Once the yay package manager is installed, fix the issue with the missing kernel modules with the following commands:
-```
-yay -S mkinitcpio-firmware aic94xx-firmware wd719x-firmware btrfs-progs
-sudo mkinitcpio -p linux
 ```
 
 ***For Laptops and WiFi:***
@@ -332,7 +306,7 @@ yay -S virtio-win
 ```
 Prepare Virt-Manager to work with the user:
 ```
-sudo usermod -G libvirt -a [user]
+sudo usermod -G libvirt -a <username>
 ```
 ```
 sudo systemctl enable libvirtd && sudo systemctl start libvirtd
